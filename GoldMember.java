@@ -27,4 +27,9 @@ public class GoldMember extends BonusMember {
 
     this.bonusPoints += pointsToAdd;
   }
+  @Override
+  public String getMembershipLevel() {
+    return "Gold";
+  }
+
 }

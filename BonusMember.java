@@ -121,6 +121,9 @@ public abstract class BonusMember implements Comparable<BonusMember> {
     //this.bonusPoints += newPoints;
 
 
+  public abstract String getMembershipLevel();
+
+
   @Override
   public int compareTo(BonusMember bonusMember){
     int sign = 0;

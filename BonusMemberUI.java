@@ -7,7 +7,7 @@ import java.util.Scanner;
 /**
  * Represents the user interface for bonusMembers.
  *
- *
+ * Credits to Simen og Olav for "Borrowed" methods.
  *
  *
  *
@@ -21,6 +21,7 @@ public class BonusMemberUI {
     private final int UPGRADE_QUALIFIED_MEMBERS = 3;
     private final int REGISTER_BONUS_POINTS = 4;
     private final int LIST_BY_POINTS = 5;
+    private static final int ADD_TEST_MEMBERS = 8;
     private final int QUIT = 6;
 
     public BonusMemberUI() { members = new MemberArchive();}
@@ -50,6 +51,7 @@ public class BonusMemberUI {
             System.out.println("3. Upgrade qualified members");
             System.out.println("4. Register bonus points");
             System.out.println("5. List all members by points");
+            System.out.println("8. Add test Members");
             System.out.println("6. Quit");
 
             int menuChoice = menuChoice();
@@ -73,6 +75,11 @@ public class BonusMemberUI {
 
                 case LIST_BY_POINTS:
                     listAllMembersByPoints();
+                    break;
+
+                case ADD_TEST_MEMBERS:
+                    System.out.println("Adding test members to archive.");
+                    addTestMembers();
                     break;
 
                 case QUIT:
@@ -211,7 +218,7 @@ public class BonusMemberUI {
         + " " + bonusMember.getPersonals().getSurname());
         System.out.println("Points: " + bonusMember.getPoints());
         System.out.println("Member number: " + bonusMember.getMemberNo());
-        System.out.println("Member type: " + bonusMember.getClass());
+        System.out.println("Member type: " + bonusMember.getMembershipLevel());
         System.out.println("");
     }
 
@@ -225,4 +232,39 @@ public class BonusMemberUI {
         bui.start();
     }
 
+    /**
+     * Adds test members to the members archive. Ment for testing purpose
+     *
+     *
+     */
+    private void addTestMembers() {
+
+        LocalDate oleEnrollDate = LocalDate.of(2006, 2, 15);
+        LocalDate toveEnrollDate = LocalDate.of(2007, 5, 3);
+        LocalDate liseEnrollDate = LocalDate.of(2008, 2, 10);
+        LocalDate jonasEnrollDate = oleEnrollDate; //same date as Ole
+        LocalDate erikEnrollDate = LocalDate.of(2007, 3, 1);
+
+        Personals ole = new Personals("Ole", "Olsen",
+                "ole.olsen@dot.com", "ole");
+        Personals tove = new Personals("Tove", "Hansen",
+                "tove.hansen@dot.com", "tove");
+        Personals lise = new Personals("Lise", "Lisand",
+                "lise@lisand.no", "lise");
+        Personals jonas = new Personals("Jonas", "Johnsen",
+                "jon@johnsen.no", "jonny");
+        Personals erik = new Personals("Erik", "Eriksen",
+                "rikken@eriksen.no", "rikkenrules");
+
+        members.addMember(ole, oleEnrollDate);
+        members.addMember(tove, toveEnrollDate);
+        members.addMember(lise, liseEnrollDate);
+        members.addMember(jonas, jonasEnrollDate);
+        members.addMember(erik, erikEnrollDate);
+    }
+
 }
+
+
+
+

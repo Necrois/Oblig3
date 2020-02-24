@@ -21,6 +21,11 @@ public class SilverMember extends BonusMember {
   }
 
   @Override
+  public String getMembershipLevel() {
+    return "Silver";
+  }
+
+  @Override
   public void registerPoints(int points) {
     float silverBonus = points * FACTOR_SILVER;
     int pointsToAdd = Math.round(silverBonus);

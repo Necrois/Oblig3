@@ -9,7 +9,7 @@ import java.util.stream.Stream;
 /**
  * Holds the archive of all bonus members.
  */
-public class MemberArchive  {
+public class MemberArchive implements Iterable<BonusMember>  {
   // Constants defining the bonus point limits for becoming silver- and gold members
   public static final int SILVER_LIMIT = 25000;
   public static final int GOLD_LIMIT = 75000;
@@ -192,8 +192,8 @@ public void forEach(Consumer<? super BonusMember> action)  { this.members.values
 
 BonusMember getBonusMember(int number) { return this.members.get(number); }
 
-//@Override
-  //public Iterator<BonusMember> iterator() { return members.values().iterator(); }
+@Override
+  public Iterator<BonusMember> iterator() { return members.values().iterator(); }
 
 
 }
